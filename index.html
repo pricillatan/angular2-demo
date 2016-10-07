@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello World</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.33.3/es6-shim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.20/system-polyfills.js"></script>
+    <script src="https://code.angularjs.org/2.0.0-beta.6/angular2-polyfills.js"></script>
+    <script src="https://code.angularjs.org/tools/system.js"></script>
+    <script src="https://code.angularjs.org/tools/typescript.js"></script>
+    <script src="https://code.angularjs.org/2.0.0-beta.6/Rx.js"></script>
+    <script src="https://code.angularjs.org/2.0.0-beta.6/angular2.dev.js"></script>
+    <script>
+      System.config({
+          //transpiler tool converts TypeScript to JavaScript
+        transpiler: 'typescript',
+
+        //emitDecoratorMetadata flag used by JavaScript output to create metadata from the decorators
+        typescriptOptions: { emitDecoratorMetadata: true },
+        packages: {'app': {defaultExtension: 'ts'}}
+      });
+    //This is  Setting the environment component
+    //    System.import('/app/environment_main')
+    //          .then(null, console.error.bind(console)); 
+     //This is include component 
+    //   System.import('/app/hello_world_main')
+            // .then(null, console.error.bind(console));
+    //This is to set the module
+    // System.import('/app/modules_main')
+    //            .then(null, console.error.bind(console));
+
+    //load the main component file from the app folder. If there is no main component file found, then it will display the error in the console.
+    System.import('/app/component_main')
+            .then(null, console.error.bind(console));
+    </script>
+  </head>
+   <!--When Angular calls the bootstrap function in main.ts, it reads the Component metadata, 
+       finds the 'app' selector, locates an element tag named app, and loads the application between those tags.-->
+<body>
+   <app>Loading...</app>
+</body>
+</html>
